@@ -7,6 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 
+
+
 def validate_email_address(email: str):
     try:
         validate_email(email)

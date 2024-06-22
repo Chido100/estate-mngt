@@ -16,28 +16,6 @@ class UsernameValidator(validators.RegexValidator):
     flag = 0
 
 
-# All streets list
-class AllStreets(models.Model):
-    street = models.CharField(max_length=100, unique=True)
-
-    class Meta:
-        verbose_name = _("All Streets")
-        verbose_name_plural = _("Streets")
-
-    def __str__(self):
-        return self.street
-
-# All house numbers list
-class HouseNumbers(models.Model):
-    house = models.CharField(max_length=10, unique=True)
-
-    class Meta:
-        verbose_name = _("House Numbers")
-        verbose_name_plural = _("House Numbers")
-    
-    def __str__(self):
-        return self.house
-
 
 
 
@@ -46,14 +24,12 @@ class User(AbstractUser):
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     first_name = models.CharField(max_length=50, verbose_name=_("First Name"))
     last_name = models.CharField(max_length=50, verbose_name=_("Last Name"))
-    street_name = models.ForeignKey(AllStreets, on_delete=models.CASCADE, related_name='all_streets', default='street')
-    house_number = models.ForeignKey(HouseNumbers, on_delete=models.CASCADE, related_name='house', default='00')
     email = models.EmailField(unique=True, verbose_name=_("Email Address"), db_index=True)
     username = models.CharField(max_length=50, verbose_name=_("Username"), unique=True, validators=[UsernameValidator])
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username, first_name, last_name, street_name, house_number"]
+    REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
     objects = UserManager()
 

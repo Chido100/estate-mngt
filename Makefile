@@ -37,4 +37,9 @@ mailpit-volume:
 estate-db:
 	docker compose -f local.yml exec postgres psql --username=chidoamefule --dbname=signala
 
+shell:
+	docker compose -f local.yml run --rm api python manage.py shell
+
+
+
 
