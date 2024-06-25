@@ -39,7 +39,7 @@ class ContentView(TimeStampedModel):
     class Meta:
         verbose_name = _("Content View")
         verbose_name_plural = _("Content Views")
-        unique_together = ["content_type", "object_id", "user", "viewer_id"]
+        unique_together = ["content_type", "object_id", "user", "viewer_ip"]
 
     def  __str__(self) -> str:
         return f"{self.content_object} viewed by {self.user.get_full_name if self.user else 'Anonymous'} from IP {self.viewer_ip}"

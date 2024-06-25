@@ -20,7 +20,7 @@ makemigrations:
 	docker compose -f local.yml run --rm api python manage.py makemigrations
 
 migrate:
-	docker compose -f local.yml --rm api python manage.py migrate
+	docker compose -f local.yml run --rm api python manage.py migrate
 
 collectstatic:
 	docker compose -f local.yml run --rm api python manage.py collectstatic --no-input --clear
