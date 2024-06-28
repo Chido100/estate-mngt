@@ -215,7 +215,7 @@ COOKIE_SECURE = getenv("COOKIE_SECURE", "True") == "True"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES":(
-        "core_apps.common.cookie.auth.CookieAuthentication",
+        "core_apps.common.cookie_auth.CookieAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES":(
         "rest_framework.permissions.IsAuthenticated",
