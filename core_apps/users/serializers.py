@@ -14,12 +14,12 @@ class CreateUserSerializer(UserCreateSerializer):
 
 
 class CustomUserSerializer(UserSerializer):
-    full_name = serializers.ReadOnlyField(source="get_full_name")
-    gender = serializers.ReadOnlyField(source="profile.gender")
-    slug = serializers.ReadOnlyField(source="profile.slug")
-    occupation = serializers.ReadOnlyField(source="profile.occupation")
+    full_name = serializers.CharField(source="get_full_name")
+    gender = serializers.CharField(source="profile.gender")
+    slug = serializers.CharField(source="profile.slug")
+    occupation = serializers.CharField(source="profile.occupation")
     phone_number = PhoneNumberField(source="profile.phone_number")
-    avatar = serializers.ReadOnlyField(source="profile.avatar.url")
+    avatar = serializers.CharField(source="profile.avatar.url")
 
     class Meta(UserSerializer.Meta):
         model = User
