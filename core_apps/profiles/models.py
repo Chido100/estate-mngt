@@ -43,8 +43,6 @@ class Profile(TimeStampedModel):
         OTHER = ("other", _("Other"))
 
     class Occupation(models.TextChoices):
-        #MANAGEMENT = ("management", _("Management"))
-        #SECURITY = ("security", _("Security"))
         RESIDENT = ("resident", _("Resident"))
         RETAILER = ("retailer", _("Retailer"))
 
@@ -55,8 +53,6 @@ class Profile(TimeStampedModel):
     bio = models.TextField(verbose_name=_("Bio"), blank=True, null=True)
     occupation = models.CharField(choices=Occupation.choices, default=Occupation.RESIDENT, max_length=20, verbose_name=_("Occupation"))
     phone_number = PhoneNumberField(verbose_name=_("Phone Number"), max_length=30, default="+2348000000000")
-    #street_name = models.ForeignKey(StreetName, on_delete=models.CASCADE, related_name="street")
-    #house_number = models.ForeignKey(HouseNumber, on_delete=models.CASCADE, max_length=10, related_name="house")
     slug = AutoSlugField(populate_from=get_user_username, unique=True)
 
     

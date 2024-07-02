@@ -26,6 +26,8 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=50, verbose_name=_("Last Name"))
     email = models.EmailField(unique=True, verbose_name=_("Email Address"), db_index=True)
     username = models.CharField(max_length=50, verbose_name=_("Username"), unique=True, validators=[UsernameValidator])
+    #street = models.ForeignKey(StreetName, on_delete=models.CASCADE, verbose_name=_("Street"), null=True, blank=True)
+    #house = models.ForeignKey(HouseNumber, on_delete=models.CASCADE, verbose_name=_("House"), null=True, blank=True)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
