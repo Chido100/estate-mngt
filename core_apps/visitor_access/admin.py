@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import VisitorAccessRequest
 
-# Register your models here.
+
+@admin.register(VisitorAccessRequest)
+class VisitorAccessAdmin(admin.ModelAdmin):
+    list_display = ['visitor_name', 'date_created', 'creator', 'assigned_to']
